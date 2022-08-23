@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Login from "./components/login";
-import Homepage from "./components/homepage";
+import Login from "./pages/login/login";
+import Homepage from "./components/homepage/homepage";
 
 function App() {
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
