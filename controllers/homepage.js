@@ -1,6 +1,6 @@
 const fetch = require("cross-fetch");
 const { response } = require("express");
-const AIC_URL = "https://api.artic.edu/api/v1/artworks/search?q=";
+// const AIC_URL = "https://api.artic.edu/api/v1/artworks/search?q=";
 
 const getArtworks = async (req, res = response) => {
   const { keyword } = req.params;

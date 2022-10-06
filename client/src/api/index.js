@@ -9,11 +9,10 @@ export async function login({ email, password }) {
       if (!response.ok) {
         throw new Error("HTTP status " + response.status);
       }
-
+      
       return response.json();
     })
     .catch((err) => {
       console.log(err);
     });
 }
-

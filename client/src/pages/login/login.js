@@ -16,8 +16,9 @@ function Login({ onLoginSuccessful }) {
     const loginResult = await login({ email, password });
     if (!loginResult) setHasError(true);
     else {
-      const { name, token } = loginResult;
+      const { id, name, token } = loginResult;
       // Save user IDs on local storage
+      localStorage.setItem("user_id", id);
       localStorage.setItem("name", name);
       localStorage.setItem("token", token);
       onLoginSuccessful();
