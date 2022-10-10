@@ -1,7 +1,7 @@
 import MarkDownEditor from "../../components/editor/mdEditor";
 import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { showNotes } from "../../api/notes";
+import { deleteNoteContent, showNotes } from "../../api/notes";
 
 function Homepage({ onLogout }) {
 
@@ -11,12 +11,31 @@ function Homepage({ onLogout }) {
   const user_id = localStorage.getItem("user_id");
 
   useEffect(() => {
-    showNotes({ user_id }).then((res) => setItems(res.allNotes));
+    handleReload();
   }, []);
+
+  const handleReload = () => {
+    showNotes({ user_id }).then((res) => {
+      if (res !== undefined) {
+        setItems(res.allNotes);
+      }
+    });
+  }
 
   const handleClick = (event, param) => {
     setCurrSelection("editor");
     setNotes_id(param);
+  }
+
+  const handleNew = (event) => {
+    setCurrSelection("editor");
+    setNotes_id("new");
+  }
+
+  const handleDelete = (event, {notes_id}) => {
+    // console.log(notes_id);
+    deleteNoteContent({notes_id});
+    handleReload()
   }
 
   // return MarkDownEditor;
@@ -25,26 +44,29 @@ function Homepage({ onLogout }) {
       <Button variant="outline-danger" onClick={onLogout}>
         Log out
       </Button>
-    
+
+      <Button onClick={handleNew}>
+        New
+      </Button>
+      
       {items.map((item, i) => 
         <Card style={{ width: '18rem' }}>
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Button onClick={event => handleClick(event, item.notes_id)} variant="primary">edit</Button>
-          <Button onClick={handleDelete} variant="warning">delete</Button>
+          <Button onClick={event => handleDelete(event, {notes_id: item.notes_id})} variant="warning">delete</Button>
         </Card.Body>
       </Card>)
       }
     </div>
   }
 
-  const handleDelete = () => {
-
-  }
+  
 
   const onBack = () => {
-    setCurrSelection("allNotes")
+    setCurrSelection("allNotes");
+    handleReload();
   }
 
   return (currSelection === "allNotes" && allNotes()) || (
