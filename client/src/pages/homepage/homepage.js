@@ -62,8 +62,6 @@ function Homepage({ onLogout }) {
     </div>
   }
 
-  
-
   const onBack = () => {
     setCurrSelection("allNotes");
     handleReload();
