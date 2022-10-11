@@ -8,7 +8,6 @@ class Server {
     this.port = process.env.PORT;
     this.paths = {
       auth: "/api/auth",
-      homepage: "/api/homepage",
       notes:"/api/notes"
     };
 
@@ -29,7 +28,6 @@ class Server {
   // Bind controllers to routes
   routes() {
     this.app.use(this.paths.auth, require("../routes/auth"));
-    this.app.use(this.paths.homepage, require("../routes/homepage"));
     this.app.use(this.paths.notes, require("../routes/notes"))
     // this.app.use(this.paths.database, require("../routes/database"))
     // Catch all requests that don't match any route
