@@ -9,6 +9,16 @@ on:
   pull_request:
     branches: [ $default-branch ]
 
+env:
+        NODE_ENV: testing
+        PG_USER: ddx
+        PG_PASSWORD: 110119
+        PG_HOST: localhost
+        PG_PORT: 5432
+        PG_DATABASE: dd_note
+        PORT: 8080
+        testURL: ${{ secrets.TESTURL }}
+        
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,15 +34,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - env:
-        NODE_ENV: testing
-        PG_USER: ddx
-        PG_PASSWORD: 110119
-        PG_HOST: localhost
-        PG_PORT: 5432
-        PG_DATABASE: dd_note
-        PORT: 8080
-        testURL: ${{ secrets.TESTURL }}
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
