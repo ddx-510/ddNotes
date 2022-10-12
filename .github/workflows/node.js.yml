@@ -21,11 +21,10 @@ env:
   PG_DATABASE: dd_note
   PORT: 8080
   ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  testURL: ${{ secrets.TESTURL }}
+  testURL: ${{ secrets.ddnotes.TESTURL }}
 
 jobs:
   build:
-    environment: CI 
     runs-on: ubuntu-latest
     strategy:
       matrix:
