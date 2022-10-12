@@ -12,7 +12,7 @@ function Homepage({ onLogout }) {
 
   useEffect(() => {
     handleReload();
-  }, []);
+  });
 
   const handleReload = () => {
     showNotes({ user_id }).then((res) => {

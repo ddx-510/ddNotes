@@ -49,7 +49,7 @@ export default function MarkDownEditor({onBack, notes_id}) {
       setIsNewNote(true);
       setContent("") // new notes, set default to null
     }
-  }, []);
+  }, [notes_id]);
   
   // console.log(content);
   const mdEditor = React.useRef(null);
