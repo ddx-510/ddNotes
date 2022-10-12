@@ -7,6 +7,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.paths = {
+      weather: "/api/weather",
       auth: "/api/auth",
       notes:"/api/notes"
     };
@@ -29,6 +30,7 @@ class Server {
   routes() {
     this.app.use(this.paths.auth, require("../routes/auth"));
     this.app.use(this.paths.notes, require("../routes/notes"))
+    this.app.use(this.paths.weather, require("../routes/weather"))
     // this.app.use(this.paths.database, require("../routes/database"))
     // Catch all requests that don't match any route
     this.app.get("*", (req, res) => {
