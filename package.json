@@ -9,7 +9,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build --prefix client",
-    "test": "mocha --exit"
+    "test": "mocha --exit --timeout 20000"
   },
   "author": "",
   "license": "ISC",
