@@ -20,7 +20,7 @@ env:
   PG_PORT: 5432
   PG_DATABASE: dd_note
   PORT: 8080
-  testURL: ${{ secrets.TESTURL }}
+  testURL: postgres://ebcngfzavaeurg:8742049fe1e4df1504acba5eb3b55145639f80dc94d2cf41ac9a0b7c04b59191@ec2-3-213-66-35.compute-1.amazonaws.com:5432/d2ecbgmihk2hla
 
 jobs:
   build:
