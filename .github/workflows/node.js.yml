@@ -20,6 +20,7 @@ env:
   PG_PORT: 5432
   PG_DATABASE: dd_note
   PORT: 8080
+  ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -38,7 +39,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        
+    - run: echo $TESTURL here!
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
