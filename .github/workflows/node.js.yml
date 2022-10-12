@@ -20,7 +20,6 @@ env:
   PG_PORT: 5432
   PG_DATABASE: dd_note
   PORT: 8080
-  testURL: postgres://ebcngfzavaeurg:8742049fe1e4df1504acba5eb3b55145639f80dc94d2cf41ac9a0b7c04b59191@ec2-3-213-66-35.compute-1.amazonaws.com:5432/d2ecbgmihk2hla
 
 jobs:
   build:
@@ -34,9 +33,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
+      env:
+        testURL: ${{ secrets.TESTURL }}
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
