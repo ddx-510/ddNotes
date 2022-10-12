@@ -21,7 +21,7 @@ env:
   PG_DATABASE: dd_note
   PORT: 8080
   ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  testURL: ${{ secrets.ddnotes.TESTURL }}
+  testURL: ${{ secrets.TESTURL }}
 
 jobs:
   build:
