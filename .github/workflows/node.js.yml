@@ -10,15 +10,15 @@ on:
     branches: [ $default-branch ]
 
 env:
-        NODE_ENV: testing
-        PG_USER: ddx
-        PG_PASSWORD: 110119
-        PG_HOST: localhost
-        PG_PORT: 5432
-        PG_DATABASE: dd_note
-        PORT: 8080
-        testURL: ${{ secrets.TESTURL }}
-        
+  NODE_ENV: testing
+  PG_USER: ddx
+  PG_PASSWORD: 110119
+  PG_HOST: localhost
+  PG_PORT: 5432
+  PG_DATABASE: dd_note
+  PORT: 8080
+  testURL: ${{ secrets.TESTURL }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
