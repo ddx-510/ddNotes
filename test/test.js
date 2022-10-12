@@ -41,6 +41,7 @@ describe("Users", () => {
                 .post("/api/auth/login")
                 .send(user)
                 .end((err, res) => {
+                    console.log(res);
                     res.should.have.status(400);
                     res.body.should.be.a('object');
                     done();
