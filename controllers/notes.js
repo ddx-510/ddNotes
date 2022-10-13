@@ -39,7 +39,6 @@ const saveOrReplace = async (req, res = response) => {
     successful: results
   })
 
-  // todo: insert into database the current notes
   // const results = await currentDB.query("SELECT * FROM users where email = $1 AND password = $2", [email, password]);
 }
 

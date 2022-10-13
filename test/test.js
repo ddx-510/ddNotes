@@ -101,7 +101,7 @@ describe("Users", () => {
         it("should able to save a file", (done) => {
             let save = {
                 user_id: "1",
-                title: "test",
+                title: "DUMMYTEST SHOULD NOT BE DELETED",
                 body: "testabcd"
             }
             chai.request("localhost:8080")
